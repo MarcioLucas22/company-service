@@ -1,5 +1,5 @@
 import { prisma } from "../../../database/prismaClient"
-import { Empresa, RegimeEspecialTributacao } from "@prisma/client"
+import { RegimeEspecialTributacao } from "@prisma/client"
 import * as yup from 'yup';
 
 

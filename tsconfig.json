@@ -1,12 +1,16 @@
 {
   "compilerOptions": {
+    "target": "ES6",
+    "module": "CommonJS",
     "sourceMap": true,
     "strict": true,
     "lib": ["esnext"],
     "esModuleInterop": true,
     "strictNullChecks": true,
     "resolveJsonModule": true,
-    "outDir": "./dist",
-    "rootDir": "./src"
+    // "outDir": "./build",
+    // "rootDir": "./src",
+    "noImplicitAny": true,
+    "moduleResolution": "Node"
   }
 }

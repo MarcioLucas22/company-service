@@ -3,7 +3,7 @@ import * as yup from 'yup';
 
 
 const clienteSchema = yup.object().shape({
-    documento: yup
+    cpfCnpj: yup
       .string()
       .matches(
         /^(\d{3}\.\d{3}\.\d{3}-\d{2}|\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2})$/,
@@ -27,7 +27,8 @@ export class CriaClienteUseCase {
         telefone: string,
         email: string
         ) {
-        // await clienteSchema.validate({cpfCnpj}, { abortEarly: false });
+
+        await clienteSchema.validate({cpfCnpj}, { abortEarly: false });
 
         const cliente = await prisma.cliente.create({
             data: {
