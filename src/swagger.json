@@ -1,0 +1,310 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+      "title": "Company-service",
+      "version": "1.0.0",
+      "description": "API para gerenciamento de cliente e empresa."
+    },
+    "paths": {
+      "/cliente/criar": {
+        "post": {
+          "summary": "Cria um cliente.",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cliente"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Cliente criado com sucesso."
+            }
+          }
+        }
+      },
+      "/cliente/editar/{id}": {
+        "put": {
+          "summary": "Atualiza um cliente pelo ID.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cliente"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Cliente atualizado com sucesso."
+            },
+            "400": {
+              "description": "Cliente não encontrado."
+            }
+          }
+        }
+      },
+      "/cliente/deletar/{id}": {
+        "delete": {
+          "summary": "Deleta um cliente pelo ID.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Cliente deletado com sucesso."
+            },
+            "400": {
+              "description": "Cliente não encontrado."
+            }
+          }
+        }
+      },
+      "/cliente/buscar": {
+        "get": {
+          "summary": "Lista todos os clientes.",
+          "responses": {
+            "200": {
+              "description": "Lista de clientes retornada com sucesso."
+            }
+          }
+        }
+      },
+      "/empresa/criar": {
+        "post": {
+          "summary": "Cria uma empresa.",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empresa"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Empresa criada com sucesso."
+            }
+          }
+        }
+      },
+      "/empresa/editar/{id}": {
+        "put": {
+          "summary": "Atualiza uma empresa pelo ID.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empresa"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Empresa atualizada com sucesso."
+            },
+            "400": {
+              "description": "Empresa não encontrada."
+            }
+          }
+        }
+      },
+      "/empresa/deletar/{id}": {
+        "delete": {
+          "summary": "Deleta uma empresa pelo ID.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Empresa deletada com sucesso."
+            },
+            "400": {
+              "description": "Empresa não encontrada."
+            }
+          }
+        }
+      },
+      "/empresa/buscar": {
+        "get": {
+          "summary": "Lista todas as empresas.",
+          "responses": {
+            "200": {
+              "description": "Lista de empresas retornada com sucesso."
+            }
+          }
+        }
+      },
+      "/empresa/buscar/{id}": {
+        "get": {
+          "summary": "Busca uma empresa pelo ID.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "400": {
+              "description": "Empresa não encontrada."
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Cliente": {
+          "type": "object",
+          "properties": {
+            "nome": {
+              "type": "string"
+            },
+            "cpfCnpj": {
+              "type": "string"
+            },
+            "registroMunicipal": {
+              "type": "string"
+            },
+            "rua": {
+              "type": "string"
+            },
+            "numero": {
+              "type": "string"
+            },
+            "complemento": {
+              "type": "string"
+            },
+            "bairro": {
+              "type": "string"
+            },
+            "codigoMunicipio": {
+              "type": "string"
+            },
+            "cidade": {
+              "type": "string"
+            },
+            "uf": {
+              "type": "string"
+            },
+            "cep": {
+              "type": "string"
+            },
+            "telefone": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            }
+          }
+        },
+        "Empresa": {
+          "type": "object",
+          "properties": {
+            "razaoSocial": {
+              "type": "string"
+            },
+            "cnpj": {
+              "type": "string"
+            },
+            "registroMunicipal": {
+              "type": "string"
+            },
+            "regimeEspecialTributacao": {
+              "$ref": "#/components/schemas/regimeEspecialTributacao"
+            },
+            "optanteSimplesNacional": {
+              "type": "boolean"
+            },
+            "rua": {
+              "type": "string"
+            },
+            "numero": {
+              "type": "string"
+            },
+            "complemento": {
+              "type": "string"
+            },
+            "bairro": {
+              "type": "string"
+            },
+            "codigoMunicipio": {
+              "type": "string"
+            },
+            "cidade": {
+              "type": "string"
+            },
+            "uf": {
+              "type": "string"
+            },
+            "cep": {
+              "type": "string"
+            },
+            "telefone": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            }
+          }
+        },
+        "regimeEspecialTributacao": {
+          "type": "string",
+          "enum": [
+            "Microempresa_Municipal",
+            "Estimativa",
+            "Sociedade_de_Profissionais",
+            "Cooperativa"
+          ]
+        }
+      }
+    }
+  }
+  
